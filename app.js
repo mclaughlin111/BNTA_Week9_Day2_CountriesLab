@@ -1,26 +1,22 @@
-console.log("Working...");
-
 const restcountries = "https://restcountries.com/v3.1/all";
+
 const search = document.querySelector("#search-bar");
-const form = document.querySelector("#country-form");
+const button = document.querySelector("#enter")
 
-countryName = search.innerHTML;
+console.log(search);
+console.log(button)
 
-form.addEventListener('submit', (event) => {
-    console.log("form submit")
+button.addEventListener('click', (event) => {
     event.preventDefault();
-    countryName = search.event.target['#search-bar'].value;
-    getCountryByName(countryName);
+    console.log("buttonclicked")
+    console.log(search.value);
+    getCountryByName(search.value);
 });
-
-
 
 
 const getCountryByName = async (countryName) => { // Get Country By Name
     const reponse = await fetch("https://restcountries.com/v3.1/name/" + countryName)
     const data = await reponse.json();
-
-    console.log(countryName);
 
     const name = (data[0].name.common);
     const flag = (data[0].flag);
@@ -45,3 +41,5 @@ const getCountryByName = async (countryName) => { // Get Country By Name
 // };
 
 // document.querySelector("#country-form").addEventListener("submit", getCountryByName(search));
+
+// getCountryByName();
